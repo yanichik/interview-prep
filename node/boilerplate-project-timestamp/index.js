@@ -47,7 +47,6 @@ app.get("/api/:date", function (req, res) {
 	if (!resObj["unix"] || !resObj["utc"]) {
 		res.send({ error: "Invalid Date" });
 	}
-	// resObj["error"] = "Invalid Date";
 	res.json(resObj);
 });
 
