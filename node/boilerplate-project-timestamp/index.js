@@ -24,16 +24,30 @@ app.get("/api/hello", function (req, res) {
 });
 
 //
+app.get("/api", function (req, res) {
+	let resObj = {};
+	resObj["unix"] = new Date().getTime();
+	resObj["utc"] = new Date().toUTCString();
+	res.json(resObj);
+});
+
 app.get("/api/:date", function (req, res) {
 	let date = req.params.date;
 	let resObj = {};
-	if (date.includes("-")) {
+	if (date.includes("-") || date.includes(" ") || date.includes("/")) {
+		console.log("if");
 		resObj["unix"] = new Date(date).getTime();
 		resObj["utc"] = new Date(date).toUTCString();
-	} else {
+		// } else {
+	} else if (new Date(Number(date))) {
+		console.log("else if");
 		resObj["unix"] = new Date(Number(date)).getTime();
 		resObj["utc"] = new Date(Number(date)).toUTCString();
 	}
+	if (!resObj["unix"] || !resObj["utc"]) {
+		res.send({ error: "Invalid Date" });
+	}
+	// resObj["error"] = "Invalid Date";
 	res.json(resObj);
 });
 
