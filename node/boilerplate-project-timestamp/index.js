@@ -45,9 +45,10 @@ app.get("/api/:date", function (req, res) {
 		resObj["utc"] = new Date(Number(date)).toUTCString();
 	}
 	if (!resObj["unix"] || !resObj["utc"]) {
-		res.send({ error: "Invalid Date" });
+		res.json({ error: "Invalid Date" });
+	} else {
+		res.json(resObj);
 	}
-	res.json(resObj);
 });
 
 // listen for requests :)
