@@ -27,8 +27,13 @@ app.get("/api/hello", function (req, res) {
 app.get("/api/:date", function (req, res) {
 	let date = req.params.date;
 	let resObj = {};
-	resObj["unix"] = new Date(date).getTime();
-	resObj["utc"] = new Date(date).toUTCString();
+	if (date.includes("-")) {
+		resObj["unix"] = new Date(date).getTime();
+		resObj["utc"] = new Date(date).toUTCString();
+	} else {
+		resObj["unix"] = new Date(Number(date)).getTime();
+		resObj["utc"] = new Date(Number(date)).toUTCString();
+	}
 	res.json(resObj);
 });
 
