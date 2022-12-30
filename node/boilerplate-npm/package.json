@@ -1,0 +1,24 @@
+{
+	"author": "Yan",
+	"name": "fcc-learn-npm-package-json",
+	"description": "learn by doing!",
+	"keywords": [
+		"freecodecamp",
+		"is",
+		"the",
+		"bomb"
+	],
+	"license": "BSD",
+	"version": "0.0.1",
+	"dependencies": {
+		"express": "^4.14.0"
+	},
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://idontknow/todo.git"
+	}
+}
